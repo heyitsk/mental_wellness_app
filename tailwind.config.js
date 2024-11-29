@@ -5,7 +5,11 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        alice: ['"Alice"', "serif"], // Add the Alice font
+      },
+    },
   },
   plugins: [],
 }
