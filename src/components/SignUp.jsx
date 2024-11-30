@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { Link, useNavigate } from "react-router-dom";
+import signin from "../assets/signin.png"
 
 const SignUp = () => {
   const [formData, setFormData] = useState({
@@ -9,6 +11,7 @@ const SignUp = () => {
   });
   const[passwordVisibility,setPasswordVisibility] = useState(false)
 
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -20,62 +23,62 @@ const SignUp = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+    
     try {
       const response = await axios.post("https://login-signup-page-w7f2.onrender.com/user/register", formData);
       console.log("Data submitted:", formData);
       console.log("API response:", response.data);
+      navigate("/verify")
     } catch (error) {
         console.error("Error details:", error.response?.data || "No error details");
 
     }
   };
 
-  return (
-    <div  className="absolute right-28 top-24 w-1/4 z-30 " >
-      <div className=" p-8 bg-[#AFFFBB] bg-opacity-35 rounded shadow-md border-2 ">
-        <h2 className="text-2xl font-semibold text-gray-800 text-center mb-6">SignUp</h2>
-        <form onSubmit={handleSubmit} className="space-y-4">
-          {/* Name Field */}
-          <div>
-            <label className="block text-sm font-medium text-gray-600" htmlFor="name">
-              Name
-            </label>
-            <input
-              type="text"
-              id="name"
-              name="name"
-              value={formData.name}
-              onChange={handleChange}
-              placeholder="Enter your name"
-              className="w-full px-4 py-2 border rounded-lg shadow-sm focus:outline-none focus:ring focus:ring-indigo-200"
-              required
-            />
-          </div>
-
-          {/* Email Field */}
-          <div>
-            <label className="block text-sm font-medium text-gray-600" htmlFor="email">
-              Email
-            </label>
-            <input
+    return (
+      <div  className="absolute right-28 top-10  z-30  " >
+        <div className="flex flex-col justify-center items-center">
+          <img src={signin} className="relative w-[150px] z-20 top-[35px] h-[80px]"/>
+        <div className=" p-4 py-10 bg-[#AFFFBB] bg-opacity-35 rounded shadow-md border-2 z-10 w-96">
+          {/* <h2 className="text-2xl font-semibold text-gray-800 text-center mb-6">SignUp</h2> */}
+          <form onSubmit={handleSubmit} className="">
+            <div>
+              <label className="font-alice font-normal  text-gray-600" htmlFor="name">
+                Name
+              </label>
+              <input
+                type="text"
+                id="name"
+                name="name"
+                value={formData.name}
+                onChange={handleChange}
+                placeholder="Enter your name"
+                className="w-full px-4 py-2 border rounded-lg shadow-sm focus:outline-none focus:ring focus:ring-indigo-200 my-2"
+                required
+              />
+            </div>
+            <div className="mt-4">
+              <label className="font-alice font-normal text-gray-600" htmlFor="email">
+                Email
+              </label>
+              <input
               type="email"
               id="email"
               name="email"
               value={formData.email}
               onChange={handleChange}
               placeholder="Enter your email"
-              className="w-full px-4 py-2 border rounded-lg shadow-sm focus:outline-none focus:ring focus:ring-indigo-200"
+              className="w-full px-4 py-2 border rounded-lg shadow-sm focus:outline-none focus:ring focus:ring-indigo-200 my-2"
               required
             />
           </div>
 
-          {/* Password Field */}
-          <div>
-            <label className="block text-sm font-medium text-gray-600" htmlFor="password">
+          
+          <div className="mt-4">
+            <label className="font-alice font-normal text-gray-600" htmlFor="password">
               Password
             </label>
-            <div className="flex gap-4">
+            <div className="flex gap-4 relative">
             <input
               type={passwordVisibility?"text":"password"}
               id="password"
@@ -83,12 +86,12 @@ const SignUp = () => {
               value={formData.password}
               onChange={handleChange}
               placeholder="Enter your password"
-              className="w-full px-4 py-2 border rounded-lg shadow-sm focus:outline-none focus:ring focus:ring-indigo-200"
+              className="w-full px-4 py-2 border rounded-lg shadow-sm focus:outline-none focus:ring focus:ring-indigo-200 my-2"
               required
             />
             <button 
                type="button"
-                className=""
+                className="absolute right-1 top-4"
                 onClick={()=>{
                    setPasswordVisibility(!passwordVisibility)
                    }}>{passwordVisibility?"🔒":"👁️"}</button>
@@ -99,12 +102,13 @@ const SignUp = () => {
           <div>
             <button
               type="submit"
-              className="w-full px-4 py-2 text-white bg-indigo-600 rounded-lg hover:bg-indigo-700 focus:outline-none focus:ring focus:ring-indigo-200"
-            >
-              Sign Up
+              className="w-full mt-10 px-4 py-2  text-white font-alice font-normal  bg-[#33D7FF] rounded-sm hover:bg-indigo-700 focus:outline-none focus:ring focus:ring-indigo-200 "
+            >Sign Up
+
             </button>
           </div>
         </form>
+      </div>
       </div>
     </div>
   );
