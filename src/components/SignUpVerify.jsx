@@ -1,10 +1,13 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { useLocation } from "react-router-dom";
 
 function SignUpVerify() {
     const [otp, setOtp] = useState("");
     const [message, setMessage] = useState("");
     const [isSuccess, setIsSuccess] = useState(false);
+    const location = useLocation();
+    const {email,token} = location.state
 
     const handleChange = (e) => {
         setOtp(e.target.value);
@@ -14,7 +17,10 @@ function SignUpVerify() {
         e.preventDefault();
 
         try {
-            const response = await axios.post("http://localhost:5000/api/verify", { otp });
+            const response = await axios.post("https://login-signup-page-w7f2.onrender.com/user/register/verify", { 
+                token,
+                email,
+                otp });
 
             if (response.data.success) {
                 setIsSuccess(true);
