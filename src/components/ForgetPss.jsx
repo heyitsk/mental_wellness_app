@@ -1,6 +1,41 @@
+import { useState } from "react";
 import signin from "../assets/signin.png"
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const ForgetPss = () => {
+  const [email, setEmail] = useState("")
+  
+  const navigate = useNavigate()
+  const handleChange = (e) => {
+      // console.log(e.target.value);
+      
+      setEmail(e.target.value)
+  }
+  
+
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+    try{ 
+      const response = await axios.post("https://login-signup-page-w7f2.onrender.com/user/forget/password",{email})
+      console.log("data sent",{email});
+      const token = response.data.token
+      // console.log(token);
+      
+      
+      console.log("api response",response.data);
+      navigate("/otpverify", { 
+        state:{ email:email,token }
+    });
+
+      
+
+    }
+    catch(error){
+      console.error("Complete error object:", error); // Log the full error object
+        console.error("Error details:", error.response?.data || "No error details");
+    }
+  }
     return(
         <>
          
@@ -10,7 +45,7 @@ const ForgetPss = () => {
         <img src={signin} className="relative w-[150px] z-20 top-[35px] h-[80px]"/>
       <div className="p-4 py-10 bg-[#AFFFBB] bg-opacity-35  rounded-2xl shadow-md border-2 z-10 w-96 h-[250px] ">
         {/* <h1 className="text-2xl font-semibold text-gray-800 text-center mb-6">Login</h1> */}
-        <form onSubmit="" className="">
+        <form onSubmit={handleSubmit} className="">
           <div>
             <label htmlFor="login-email" className="block font-alice font-normal  text-gray-600">
               Email
@@ -19,9 +54,9 @@ const ForgetPss = () => {
               type="email"   
               id="login-email"
               name="email"
-              value=""
+              value={email}
               placeholder="Enter your email"
-              onChange={(e) => setEmail(e.target.value)}
+              onChange={handleChange}
               required
               className="w-full px-4 py-2 border rounded-lg shadow-sm focus:outline-none focus:ring focus:ring-indigo-200 my-2"
             />
