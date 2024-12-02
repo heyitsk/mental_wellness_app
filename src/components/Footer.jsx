@@ -15,7 +15,7 @@ const Footer = () => {
         <p className="  text-white font-alice font-normal text-[28px]">SUKOON</p>
       </div>
 
-      <div className="flex items-center ">
+      {/* <div className="flex items-center "> */}
       <div className="flex gap-8">
         <a href="#about" className="hover:text-gray-400 font-alice font-normal text-[20px] underline">
           About Us
@@ -32,14 +32,14 @@ const Footer = () => {
       </div>
 
       
-      <div className="flex-shrink-0 ml-32">
+      {/* <div className="flex-shrink-0 ml-32">
         <img 
           src={conatus} 
           alt="Footer Illustration" 
           className="w-24 h-24 object-cover" 
         />
-      </div>
-      </div>
+      </div> */}
+      {/* </div> */}
     </footer>
   );
 };
