@@ -15,6 +15,8 @@ import fwp from "../assets/fwp.png"
 import bp from "../assets/bp.png"
 import Rectangle8 from "../assets/Rectangle 8.png"
 import ForgetPss from "./ForgetPss";
+import ForgetPssVerify from "./ForgetPssVerify";
+import ResetPss from "./ResetPss";
 
 
 
@@ -57,6 +59,8 @@ const LandingPage = () => {
 
                         <Route path="/verify" element={<SignUpVerify />} />
                         <Route path="/SignUp" element={<SignUp/>}/>
+                        <Route path="/otpverify" element={<ForgetPssVerify/>}/>
+                        <Route path="/passwordreset" element={<ResetPss/>}/>
                     </Routes>
                  </Router>
               </div>
@@ -68,10 +72,10 @@ const LandingPage = () => {
               src={Rectangle8}
               className="absolute left-0 z-30 w-[800px] top-[1px] "
               />
-              {/* <div className="absolute left-[50px] text-black font-alice font-normal z-40 top-[10px] flex flex-col justify-center items-center gap-8" >
-                <h1 className="text-5xl font-bold">How we can help you ?</h1>
-                 <p className="text-lg">we provide a holistic solution to enhance your mental wellness. Through guided yoga sessions tailored to your needs and a collection of soothing wellness music, I can help you reduce stress, improve focus, and find balance in your life. Whether you're looking to unwind, boost your mood, or simply take a moment for yourself, SUKOON offers the tools and support to nurture your mind and body, helping you feel more centered and at peace every day.</p>
-            </div> */}
+                <div className="absolute left-[50px] text-black font-alice font-normal z-40 top-[60px] w-[700px] flex flex-col gap-16 leading-10 justify-center items-center" >
+                    <h1 className="text-5xl font-bold">How we can help you ?</h1>
+                    <p className="font-alice font-normal text-[25px] leading-10">We provide a holistic solution to enhance your mental wellness. Through guided yoga sessions tailored to your needs and a collection of soothing wellness music, I can help you reduce stress, improve focus, and find balance in your life. Whether you're looking to unwind, boost your mood, or simply take a moment for yourself, SUKOON offers the tools and support to nurture your mind and body, helping you feel more centered and at peace every day.</p>
+                </div>
               <img
               src={p2bgg}
               className="absolute right-0 z-10 w-[500px]"
@@ -89,8 +93,23 @@ const LandingPage = () => {
           <div className="relative inset-0 flex justify-center items-center h-[900px]">
             <img 
             src={fwp}
-            className=" absolute w-[700px]" 
+            className=" absolute w-[800px]" 
             />
+            <div className="absolute left-[500px] text-black font-alice font-normal z-40 top-[331px]" >
+                    <p className="text-[25px] leading-5">Detailed <br></br> Analysis</p>
+            </div>
+            <div className="absolute right-[490px] text-black font-alice font-normal z-40 top-[331px]" >
+                    <p className="text-[25px] leading-5">Relaxed <br></br> Journals</p>
+            </div>
+            <div className="absolute right-[490px] text-black font-alice font-normal z-40 bottom-[346px]" >
+                    <p className="text-[25px] leading-5">Yoga <br></br> Sessions</p>
+            </div>
+            <div className="absolute left-[500px] text-black font-alice font-normal z-40 bottom-[346px]" >
+                    <p className="text-[25px] leading-5">Relaxing <br></br> Music</p>
+            </div>
+            <div className="absolute top-[370px] right-[650px] text-black font-alice font-normal z-40 " >
+                    <p className="text-[55px] leading-[50px] text-center">Features <br></br> We <br></br> Provide</p>
+            </div>
 
           </div>
           <div className="relative h-[800px] flex items-end">
