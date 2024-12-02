@@ -2,12 +2,15 @@ import React, { useState } from "react";
 import axios from "axios";
 import signin from "../assets/signin.png"
 import { Link } from "react-router-dom";
+import Dashboard from "./Dashboard";
 
 
 
 const Login = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [data, setData] = useState({
+    email:"",
+    password:""
+  })
   const [error, setError] = useState(null);
   const[passwordVisibility,setPasswordVisibility] = useState(false)
  
@@ -15,23 +18,28 @@ const Login = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const userData = {
-      email,
-      password,
-    };
 
     try {
       const response = await axios.post(
         "https://login-signup-page-w7f2.onrender.com/user/login",
-        userData
+        data
       );
       console.log("Login successful:", response.data);
-      // Handle successful login here (e.g., redirect, set user state, etc.)
+      // console.log(response.data.status);
+      
+      // if(response.data.status === true) return <Dashboard/>
     } catch (err) {
       setError("Login failed. Please try again.");
       console.error("Error submitting login:", err);
     }
   };
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+      setData((prevData) => ({
+        ...prevData,
+        [name]: value,
+      }));
+  }
   
   
 
@@ -52,9 +60,9 @@ const Login = () => {
               type="email"
               id="login-email"
               name="email"
-              value={email}
+              value={data.email}
               placeholder="Enter your email"
-              onChange={(e) => setEmail(e.target.value)}
+              onChange={handleChange}
               required
               className="w-full px-4 py-2 border rounded-lg shadow-sm focus:outline-none focus:ring focus:ring-indigo-200 my-2"
             />
@@ -68,8 +76,8 @@ const Login = () => {
               type={passwordVisibility?"text":"password"}
               id="password"
               name="password"
-              value={password}
-              // onChange={handleChange}
+              value={data.password}
+              onChange={handleChange}
               placeholder="Enter your password"
               className="w-full px-4 py-2 border rounded-lg shadow-sm focus:outline-none focus:ring focus:ring-indigo-200 mt-2"
               required
@@ -79,7 +87,7 @@ const Login = () => {
                 className="absolute right-1 top-4"
                 onClick={()=>{
                    setPasswordVisibility(!passwordVisibility)
-                   }}>{passwordVisibility?"🔒":"👁️"}</button>
+                   }}>{passwordVisibility?"🔓":"🔒"}</button>
             </div>
             </div>
           
@@ -96,6 +104,7 @@ const Login = () => {
             <p><Link to="/SignUp">Don’t have an account?</Link></p>
           </div>
         </form>
+        
       </div>
       </div>
     </div>
