@@ -9,6 +9,15 @@ const ForgetPssVerify = () => {
     const [isSuccess, setIsSuccess] = useState(false);
     const location = useLocation();
     const {email,token} = location.state
+    // console.log(location.state);
+    
+    // console.log("email from state:", email);
+    // console.log("token from state:", token);
+
+    
+    
+    
+    
     const navigate = useNavigate();
     const handleChange = (e) => {
         setOtp(e.target.value);
@@ -16,6 +25,10 @@ const ForgetPssVerify = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        console.log(email);
+        console.log(token);
+        
+        
 
         try {
             const response = await axios.post("https://login-signup-page-w7f2.onrender.com/user/otp/verify", { 
@@ -23,14 +36,17 @@ const ForgetPssVerify = () => {
                 token,
                 otp });
             console.log("api response",response.data);
-            navigate("/passwordreset",{
-                state:{email}
-            })
+            const resetToken = response.data.resetToken
+                console.log(resetToken);
+                navigate("/passwordreset",{
+                    state:{resetToken}
+                })
             
 
             if (response.data.success) {
                 setIsSuccess(true);
                 setMessage(response.data.message || "Verification successful!");
+                
                 
             } else {
                 setMessage(response.data.message || "Verification failed!");

@@ -25,8 +25,9 @@ const ForgetPss = () => {
       
       console.log("api response",response.data);
       navigate("/otpverify", { 
-        state:{ email:email,token }
+        state: { email, token }
     });
+    
 
       
 

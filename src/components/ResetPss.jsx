@@ -1,32 +1,43 @@
 import axios from "axios";
 import { useState } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation,useNavigate } from "react-router-dom";
 
 const ResetPss = ()=>{
-    const [password, setPassword] = useState("")
-    const [confirmPassword,setConfirmPassword] = useState("")
+    // const [newPassword, setNewPassword] = useState("")
+    // const [confirmPassword,setConfirmPassword] = useState("")
+    const [data, setData] = useState({
+      newPassword:"",
+      confirmPassword:"",
+    })
     const [passwordVisibility,setPasswordVisibility] = useState(false)
     const [cfpasswordVisibility,setCfPasswordVisibility] = useState(false)
     const [message, setMessage] = useState("");
-    // const location = useLocation();
-    // const {email} = location.state
+    const location = useLocation();
+    // console.log(location);
+    
+    const {resetToken} = location.state
+    // console.log("rt:",resetToken);
+    
+    const navigate = useNavigate();
 
+    const isPasswordMatch = (data.newPassword === data.confirmPassword)
 
-    const isPasswordMatch = (password === confirmPassword)
-
-    // const handleChange = (e) => {   
-    //     const {name,value} = e.target
-
-    // }
+    const handleChange = (e) => {   
+        const {name,value} = e.target
+        setData((prevData)=>({
+          ...prevData,
+          [name]:value,
+        }))
+    }
     const handleSubmit = async(e) => {
           e.preventDefault()
           try{
-            const response = axios.post("https://login-signup-page-w7f2.onrender.com/user/reset/password",{
-              password,
-              confirmPassword,
-              email})
+            const response = await axios.post("https://login-signup-page-w7f2.onrender.com/user/reset/password",{
+              resetToken,
+              ...data
+              })
             console.log("api response", response.data);
-
+            navigate("/")
             
           }
           catch (error) {
@@ -51,10 +62,9 @@ const ResetPss = ()=>{
               <input
                 type={passwordVisibility?"text":"password"}
                 id="password"
-                name="password"
-                value={password}
-                onChange={(e)=>
-                    setPassword(e.target.value)}
+                name="newPassword"
+                value={data.newPassword}
+                onChange={handleChange}
                 placeholder="Enter your password"
                 className="w-full px-4 py-2 border rounded-lg shadow-sm focus:outline-none focus:ring focus:ring-indigo-200 my-2"
                 required
@@ -75,11 +85,9 @@ const ResetPss = ()=>{
               <input
                 type={cfpasswordVisibility?"text":"password"}
                 id="confirmpassword"
-                name="confirmpassword"
-                value={confirmPassword}
-                onChange={(e)=>{
-                    setConfirmPassword(e.target.value)
-                }}
+                name="confirmPassword"
+                value={data.confirmPassword}
+                onChange={handleChange}
                 placeholder="Enter your password"
                 className="w-full px-4 py-2 border rounded-lg shadow-sm focus:outline-none focus:ring focus:ring-indigo-200 my-2"
                 required
@@ -95,7 +103,7 @@ const ResetPss = ()=>{
             <div>
               <button
                 type="submit"
-                className="w-full mt-10 px-4 py-2  text-white font-alice font-normal  bg-[#33D7FF] rounded-sm hover:bg-indigo-700 focus:outline-none focus:ring focus:ring-indigo-200 "
+                className={`w-full mt-10 px-4 py-2  text-white font-alice font-normal ${isPasswordMatch?"bg-[#33D7FF]  hover:bg-indigo-700":"bg-[#93def0] "}  rounded-sm focus:outline-none focus:ring focus:ring-indigo-200 `}
               >Reset Password
 
               </button>
