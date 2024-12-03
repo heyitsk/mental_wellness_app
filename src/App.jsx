@@ -20,6 +20,7 @@ const App = () =>{
 
                 <Route path="/verify" element={<SignUpVerify />} />
                 <Route path="/SignUp" element={<SignUp/>}/>
+
                 </Route>
             </Routes>
         </Router> */}

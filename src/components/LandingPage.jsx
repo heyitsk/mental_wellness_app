@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route} from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route} from "react-router-dom"; 
 import SignUpVerify from "./SignUpVerify";
 import SignUp from "./SignUp"
 import Login from "./Login";
@@ -52,7 +52,8 @@ const LandingPage = () => {
                       alt="Vector2"
                       className="absolute top-[28px] right-0 z-20 w-[400px]"
                   />
-                  <Router>
+                    
+                    <Router>
                     <Routes>
                          <Route path="/" element={<Login />} />
                          <Route path="/forgetpss" element={<ForgetPss />} />
@@ -62,7 +63,9 @@ const LandingPage = () => {
                         <Route path="/otpverify" element={<ForgetPssVerify/>}/>
                         <Route path="/passwordreset" element={<ResetPss/>}/>
                     </Routes>
-                 </Router>
+                    </Router>
+                
+                 
               </div>
 
               
@@ -121,7 +124,7 @@ const LandingPage = () => {
             />
 
             
-            <div className="ml-[885px] mb-[203px] bottom-[10px] text-[34px] font-normal leading-10">
+            <div className="absolute right-[150px] bottom-[190px] text-[34px] font-normal leading-10">
                 <div className="flex flex-col justify-center items-center ">
                 <p className=" text-black font-alice font-normal  ">
                 Chance make changes!!</p>
