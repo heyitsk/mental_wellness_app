@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 function SignUpVerify() {
     const [otp, setOtp] = useState("");
@@ -8,6 +8,7 @@ function SignUpVerify() {
     const [isSuccess, setIsSuccess] = useState(false);
     const location = useLocation();
     const {email,token} = location.state
+    const navigate = useNavigate();
 
     const handleChange = (e) => {
         setOtp(e.target.value);
@@ -21,7 +22,7 @@ function SignUpVerify() {
                 token,
                 email,
                 otp });
-
+            navigate("/")
             if (response.data.success) {
                 setIsSuccess(true);
                 setMessage(response.data.message || "Verification successful!");
