@@ -23,3 +23,6 @@ notes.txt
 *.njsproj
 *.sln
 *.sw?
+
+
+.env
