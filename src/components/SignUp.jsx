@@ -2,6 +2,7 @@
   import axios from "axios";
   import { Link, useNavigate } from "react-router-dom";
   import signin from "../assets/signin.png"
+  import spinner from "../assets/spinner.svg"
 
   const SignUp = () => {
     const [formData, setFormData] = useState({
@@ -10,6 +11,7 @@
       password: "",
     });
     const[passwordVisibility,setPasswordVisibility] = useState(false)
+    const [loading, setLoading] = useState(false); 
 
     const navigate = useNavigate();
 
@@ -23,13 +25,14 @@
 
     const handleSubmit = async (e) => {
       e.preventDefault();
-      
+      setLoading(true)
+      // const url = process.env.REACT_APP_SIGNUP_URL
       try {
-        const response = await axios.post("https://login-signup-page-w7f2.onrender.com/user/register", formData);
+        const response = await axios.post("https://login-signup-page-3z09.onrender.com/user/register", formData);
         console.log("Data submitted:", formData);
         console.log("API response:", response.data);
         const token = response.data.token;
-        navigate("/verify", {
+        navigate("/registration/signup-verify", {
           state: { email: formData.email, token },
       })
         
@@ -37,6 +40,8 @@
         
           console.error("Complete error object:", error); // Log the full error object
           console.error("Error details:", error.response?.data || "No error details");
+      } finally{
+        setLoading(false)
       }
       
 
@@ -49,6 +54,20 @@
             <img src={signin} className="relative w-[150px] z-20 top-[35px] h-[80px]"/>
           <div className=" p-4 py-10 bg-[#AFFFBB] bg-opacity-35 rounded shadow-md border-2 z-10 w-96">
             {/* <h2 className="text-2xl font-semibold text-gray-800 text-center mb-6">SignUp</h2> */}
+
+            {loading?(
+              <div className="loading-screen flex flex-col justify-center items-center">
+              
+              <div className="spinner">
+                <img 
+                src={spinner}
+                alt="spinner"
+                className=""
+                />
+              </div>
+              </div>
+            ):(
+
             <form onSubmit={handleSubmit} className="">
               <div>
                 <label className="font-alice font-normal  text-gray-600" htmlFor="name">
@@ -116,6 +135,7 @@
               </button>
             </div>
           </form>
+          )}
         </div>
         </div>
       </div>
