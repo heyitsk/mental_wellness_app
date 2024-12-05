@@ -31,13 +31,14 @@ const ResetPss = ()=>{
     }
     const handleSubmit = async(e) => {
           e.preventDefault()
+          // const url = process.env.REACT_APP_PASSWORDRESET_URL
           try{
-            const response = await axios.post("https://login-signup-page-w7f2.onrender.com/user/reset/password",{
+            const response = await axios.post("https://login-signup-page-3z09.onrender.com/user/reset/password",{
               resetToken,
               ...data
               })
             console.log("api response", response.data);
-            navigate("/")
+            navigate("/registration/login")
             
           }
           catch (error) {

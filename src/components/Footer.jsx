@@ -6,7 +6,7 @@ const Footer = () => {
   return (
     <footer className="flex justify-between items-center px-8 py-4 bg-[#562C3C] text-white">
       
-      <div className="flex-shrink-0">
+      <div className="flex flex-col items-center">
         <img 
           src={logo} 
           alt="Logo" 

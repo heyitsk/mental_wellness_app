@@ -16,15 +16,16 @@ const ForgetPss = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
+    // const url = process.env.REACT_APP_FORGETPSS_URL
     try{ 
-      const response = await axios.post("https://login-signup-page-w7f2.onrender.com/user/forget/password",{email})
+      const response = await axios.post("https://login-signup-page-3z09.onrender.com/user/forget/password" ,{email})
       console.log("data sent",{email});
       const token = response.data.token
       // console.log(token);
       
       
       console.log("api response",response.data);
-      navigate("/otpverify", { 
+      navigate("/registration/forget-passwordverify", { 
         state: { email, token }
     });
     

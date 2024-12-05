@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route} from "react-router-dom"; 
+import { BrowserRouter as Router, Routes, Route, Link} from "react-router-dom"; 
 import SignUpVerify from "./SignUpVerify";
 import SignUp from "./SignUp"
 import Login from "./Login";
@@ -10,6 +10,9 @@ import Vector3 from "../assets/Vector 3.png"
 import p2bg from "../assets/p2bg.png"
 import p2bgg from "../assets/p2bgg.png"
 import p2ill from "../assets/p2ill.png"
+import textbl from "../assets/textbl.png"
+
+
 import m2 from "../assets/m2.png"
 import fwp from "../assets/fwp.png"
 import bp from "../assets/bp.png"
@@ -17,6 +20,7 @@ import Rectangle8 from "../assets/Rectangle 8.png"
 import ForgetPss from "./ForgetPss";
 import ForgetPssVerify from "./ForgetPssVerify";
 import ResetPss from "./ResetPss";
+import Questions from "./Questions";
 
 
 
@@ -52,8 +56,23 @@ const LandingPage = () => {
                       alt="Vector2"
                       className="absolute top-[28px] right-0 z-20 w-[400px]"
                   />
-                    
-                    <Router>
+                  <div className="absolute right-28 top-48 z-30">
+      
+                    <div className="flex flex-col justify-center items-center">
+                                     <div className="p-4 py-10 bg-[#AFFFBB] bg-opacity-35  rounded-2xl shadow-md border-2 z-10 w-96 h-[200px] ">
+                                         <h1 className="text-2xl font-semibold text-gray-800 text-center mb-6">Get Started</h1>
+                                         <button
+                                         type="submit"
+                                        className="w-full mt-10 px-4 py-2  text-white font-alice font-normal  bg-[#33D7FF] rounded-lg hover:bg-indigo-700 focus:outline-none focus:ring focus:ring-indigo-200 "
+                                        ><Link to="/registration">
+                                        
+                                            Click
+                                            
+                                            </Link></button>
+                                    </div>
+                    </div>
+                    </div>
+                    {/* <Router>
                     <Routes>
                          <Route path="/" element={<Login />} />
                          <Route path="/forgetpss" element={<ForgetPss />} />
@@ -62,8 +81,11 @@ const LandingPage = () => {
                         <Route path="/SignUp" element={<SignUp/>}/>
                         <Route path="/otpverify" element={<ForgetPssVerify/>}/>
                         <Route path="/passwordreset" element={<ResetPss/>}/>
+                        <Route path="/questions" element={<Questions/>}/>
+
+                        
                     </Routes>
-                    </Router>
+                    </Router> */}
                 
                  
               </div>
@@ -72,7 +94,7 @@ const LandingPage = () => {
           </div>
           <div className="relative h-[800px]">
               <img 
-              src={Rectangle8}
+              src={textbl}
               className="absolute left-0 z-30 w-[800px] top-[1px] "
               />
                 <div className="absolute left-[50px] text-black font-alice font-normal z-40 top-[60px] w-[700px] flex flex-col gap-16 leading-10 justify-center items-center" >

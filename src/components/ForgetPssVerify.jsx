@@ -28,17 +28,17 @@ const ForgetPssVerify = () => {
         console.log(email);
         console.log(token);
         
-        
+        // const url = process.env.REACT_APP_FORGETPSSVERIFY_URL
 
         try {
-            const response = await axios.post("https://login-signup-page-w7f2.onrender.com/user/otp/verify", { 
+            const response = await axios.post("https://login-signup-page-3z09.onrender.com/user/otp/verify", { 
                 email,
                 token,
                 otp });
             console.log("api response",response.data);
             const resetToken = response.data.resetToken
                 console.log(resetToken);
-                navigate("/passwordreset",{
+                navigate("/registration/resetpss",{
                     state:{resetToken}
                 })
             

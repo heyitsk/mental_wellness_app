@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { useLocation, useNavigate } from "react-router-dom";
+import spinner from "../assets/spinner.svg"
+
 
 function SignUpVerify() {
     const [otp, setOtp] = useState("");
@@ -8,6 +10,8 @@ function SignUpVerify() {
     const [isSuccess, setIsSuccess] = useState(false);
     const location = useLocation();
     const {email,token} = location.state
+    const [loading, setLoading] = useState(false); 
+
     const navigate = useNavigate();
 
     const handleChange = (e) => {
@@ -16,13 +20,13 @@ function SignUpVerify() {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-
+        // const url = process.env.REACT_APP_SIGNUP_VERIFY_URL
         try {
-            const response = await axios.post("https://login-signup-page-w7f2.onrender.com/user/register/verify", { 
+            const response = await axios.post("https://login-signup-page-3z09.onrender.com/user/register/verify", { 
                 token,
                 email,
                 otp });
-            navigate("/")
+            navigate("/registration/login")
             if (response.data.success) {
                 setIsSuccess(true);
                 setMessage(response.data.message || "Verification successful!");
