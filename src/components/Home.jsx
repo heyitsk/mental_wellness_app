@@ -12,9 +12,9 @@ import PieChart from "./Pie";
 
 const Home = () => {
     const location = useLocation()
-    console.log(location.state)
+    // console.log(location.state)
     const stats = location.state?.info?.stats;
-    console.log(stats);
+    console.log("home stats",stats);
     
     return  (
         <>
@@ -36,9 +36,8 @@ const Home = () => {
                         <p  className="text-[20px] ml-10">Journal</p>
                         <img src={journal} alt="home img" className="w-[49px] h-[52px]"></img>
                      </div>
-                     <div className="absolute z-10 right-[100px] h-28 w-[100px]">
                             <PieChart data={stats}/>
-                     </div>
+                     
                 </div>
                 
             </div>
