@@ -62,30 +62,22 @@ const LandingPage = () => {
                                      <div className="p-4 py-10 bg-[#AFFFBB] bg-opacity-35  rounded-2xl shadow-md border-2 z-10 w-96 h-[200px] ">
                                          <h1 className="text-2xl font-semibold text-gray-800 text-center mb-6">Get Started</h1>
                                          <button
-                                         type="submit"
-                                        className="w-full mt-10 px-4 py-2  text-white font-alice font-normal  bg-[#33D7FF] rounded-lg hover:bg-indigo-700 focus:outline-none focus:ring focus:ring-indigo-200 "
-                                        ><Link to="/registration">
-                                        
+                                        type="button"
+                                        className="w-full mt-10 px-4 py-2 text-white font-alice font-normal bg-[#33D7FF] rounded-lg hover:bg-indigo-700 focus:outline-none focus:ring focus:ring-indigo-200"
+                                        >
+                                        <Link
+                                            to="/registration"
+                                            className="w-full h-full flex justify-center items-center"
+                                            style={{ textDecoration: 'none', color: 'inherit' }}
+                                        >
                                             Click
-                                            
-                                            </Link></button>
+                                        </Link>
+                                        </button>
+
                                     </div>
                     </div>
                     </div>
-                    {/* <Router>
-                    <Routes>
-                         <Route path="/" element={<Login />} />
-                         <Route path="/forgetpss" element={<ForgetPss />} />
-
-                        <Route path="/verify" element={<SignUpVerify />} />
-                        <Route path="/SignUp" element={<SignUp/>}/>
-                        <Route path="/otpverify" element={<ForgetPssVerify/>}/>
-                        <Route path="/passwordreset" element={<ResetPss/>}/>
-                        <Route path="/questions" element={<Questions/>}/>
-
-                        
-                    </Routes>
-                    </Router> */}
+                    
                 
                  
               </div>
@@ -120,19 +112,19 @@ const LandingPage = () => {
             src={fwp}
             className=" absolute w-[800px]" 
             />
-            <div className="absolute left-[500px] text-black font-alice font-normal z-40 top-[331px]" >
+            <div className="absolute left-[36%] text-black font-alice font-normal z-40 top-[331px]" >
                     <p className="text-[25px] leading-5">Detailed <br></br> Analysis</p>
             </div>
-            <div className="absolute right-[490px] text-black font-alice font-normal z-40 top-[331px]" >
+            <div className="absolute right-[35%] text-black font-alice font-normal z-40 top-[331px]" >
                     <p className="text-[25px] leading-5">Relaxed <br></br> Journals</p>
             </div>
-            <div className="absolute right-[490px] text-black font-alice font-normal z-40 bottom-[346px]" >
+            <div className="absolute right-[35%] text-black font-alice font-normal z-40 bottom-[346px]" >
                     <p className="text-[25px] leading-5">Yoga <br></br> Sessions</p>
             </div>
-            <div className="absolute left-[500px] text-black font-alice font-normal z-40 bottom-[346px]" >
+            <div className="absolute left-[36%] text-black font-alice font-normal z-40 bottom-[346px]" >
                     <p className="text-[25px] leading-5">Relaxing <br></br> Music</p>
             </div>
-            <div className="absolute top-[370px] right-[650px] text-black font-alice font-normal z-40 " >
+            <div className="absolute top-[370px] right-[44%] text-black font-alice font-normal z-40 " >
                     <p className="text-[55px] leading-[50px] text-center">Features <br></br> We <br></br> Provide</p>
             </div>
 

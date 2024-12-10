@@ -38,7 +38,7 @@
         
       } catch (error) {
         
-          console.error("Complete error object:", error); // Log the full error object
+          console.error("Complete error object:", error); 
           console.error("Error details:", error.response?.data || "No error details");
       } finally{
         setLoading(false)

@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import axios from "axios";
 import signin from "../assets/signin.png"
 import { Link, useNavigate } from "react-router-dom";
-import Dashboard from "./Dashboard"; 
  import spinner from "../assets/spinner.svg"
 import { Navigate } from "react-router-dom";
 
@@ -63,7 +62,7 @@ const Login = () => {
       {/* <div className="p-4 py-10 bg-white  rounded-[19px] shadow-md border-2 z-10 w-96 h-[460px] "> */}
 
         {/* <h1 className="text-2xl font-semibold text-gray-800 text-center mb-6">Login</h1> */}
-        {error && <p className="text-red-500 text-center mb-4">{error}</p>}
+        {/* {error && <p className="text-red-500 text-center mb-4">{error}</p>} */}
         {loading?(
               <div className="loading-screen flex flex-col justify-center items-center">
               
