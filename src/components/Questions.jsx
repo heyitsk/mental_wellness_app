@@ -3,6 +3,7 @@
   import { useState } from "react";
   import axios from "axios";
   import { useLocation, useNavigate } from "react-router-dom";
+  import { useStats } from "../contexts/StatsContexts";
 
   const Questions = () => {
     const [responses, setResponses] = useState({
@@ -14,6 +15,7 @@
     const location = useLocation();
     const {email} = location.state
     const navigate = useNavigate();
+    const { setStats } = useStats();
 
     const [apiResponse, setApiResponse] = useState(null); // To store API response
 
@@ -39,9 +41,10 @@
         const response = await axios.post("https://login-signup-page-3z09.onrender.com/user/submit-survey",payload);
         console.log("API Response:", response.data);
         const info = response.data
+        setStats(info);
 
-        navigate("/home",{
-          state:{info}
+        navigate("/dashboard",{
+        
         })
         
       } catch (error) {
