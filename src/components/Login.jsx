@@ -4,10 +4,12 @@ import signin from "../assets/signin.png"
 import { Link, useNavigate } from "react-router-dom";
  import spinner from "../assets/spinner.svg"
 import { Navigate } from "react-router-dom";
+import { jwtDecode } from "jwt-decode";
 
 
 
 const Login = () => {
+  const jwt_decode = jwtDecode;
   const [data, setData] = useState({
     email:"",
     password:""
@@ -29,6 +31,15 @@ const Login = () => {
         data
       );
       console.log("Login successful:", response.data);
+      const {token} = response.data;
+      console.log(token);
+      const decodedToken = jwt_decode(token)
+      const userId = decodedToken.userId
+      console.log(userId);
+      localStorage.setItem("userId",userId);
+      
+      
+
       navigate("/questions",{
         state:{email:data.email}
       })

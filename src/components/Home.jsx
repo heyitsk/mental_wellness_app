@@ -5,6 +5,7 @@ import BarChart from "./Bar";
 import Mood from "./Mood";
 import Quote from "./Quote";
 import { useStats } from "../contexts/StatsContexts";
+import MoodGraph from "./MoodGraph";
 
 
 
@@ -28,7 +29,12 @@ const Home = () => {
                 
                             <BarChart data={st2}/>
                             <Mood/>
+                            
+                            <MoodGraph/>
                             <Quote/>
+                            
+
+                        
                      
             
                 

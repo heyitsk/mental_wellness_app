@@ -31,7 +31,7 @@ const Quote = () =>  {
     return(
         
         <>
-        <div className="bg-white absolute right-[140px] top-[345px] rounded-md shadow-lg border-2 p-10 border-black flex flex-col gap-10 justify-center items-center w-[579px]">
+        <div className="bg-white absolute left-[200px] top-[660px] rounded-md shadow-lg border-2 p-10 border-black flex flex-col gap-10 justify-center items-center w-[610px]">
             <div>
                 <p className="font-normal font-alice text-[40px]">Quote Of the Day</p>
             </div>
