@@ -18,6 +18,7 @@ import ResetPss from "./components/ResetPss";
 import Music from "./components/Music";
 import Exercise from "./components/Exercise";
 import Dashboard from "./components/Dashboard";
+import Profile from "./components/Profile";
 const App = () =>{
     return(
         <>
@@ -93,6 +94,10 @@ export const appRouter = createBrowserRouter([
               {
                 path:"exercise",
                 element:<Exercise/>
+              },
+              {
+                path:"profile",
+                element:<Profile/>
               }
               
 

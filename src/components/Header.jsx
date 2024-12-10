@@ -1,6 +1,6 @@
 import { log10 } from "chart.js/helpers";
 import { use } from "react";
-import { useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import pfp from "../assets/pfp.png"
 
 
@@ -31,12 +31,14 @@ const Header = () => {
                           <a href="#" className="hover:underline">Contact Us</a>
                       </div>
                       ):(
+                        <Link to="/dashboard/profile">
                         <div className=" flex mr-10">
                             <img
                             src={pfp}
                             alt="image"
                             className="w-[58px]"></img>
                         </div>
+                        </Link>
                       )}
                   </div>
               </div>

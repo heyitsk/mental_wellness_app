@@ -4,6 +4,7 @@
   import signin from "../assets/signin.png"
   import spinner from "../assets/spinner.svg"
 
+
   const SignUp = () => {
     const [formData, setFormData] = useState({
       name: "",
@@ -32,6 +33,8 @@
         console.log("Data submitted:", formData);
         console.log("API response:", response.data);
         const token = response.data.token;
+        localStorage.setItem("name", formData.name);
+        localStorage.setItem("email", formData.email);
         navigate("/registration/signup-verify", {
           state: { email: formData.email, token },
       })

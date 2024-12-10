@@ -13,7 +13,7 @@ const Quote = () =>  {
 
     const fetchData = async()=>{
         try{
-            const response = await axios.get("https://zenquotes.io/api/random")
+            const response = await axios.get("https://zenquotes.io/api/today")
             console.log(response);
             const qu = response.data[0].q
             const au = response.data[0].a

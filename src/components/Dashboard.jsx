@@ -4,6 +4,7 @@ import ex from "../assets/ex.png"
 import headphones from "../assets/headphones.png"
 import journal from "../assets/journal.png"
 import { Link, Outlet, useLocation } from "react-router-dom"
+import pfp from "../assets/pfp.png"
 
 const Dashboard = () => {
     const location = useLocation();
@@ -64,6 +65,23 @@ const Dashboard = () => {
                         <p  className="text-[20px] ml-10">Journal</p>
                         <img src={journal} alt="home img" className="w-[49px] h-[52px]"></img>
                      </div>
+
+
+
+                     <Link to="/dashboard/profile">
+                     {(location.pathname === '/dashboard/profile') ? (
+                     <div id="profile" className="bg-white text-[#88f78a] flex justify-center items-center gap-4 pl-8 pr-6 py-4 font-alice font-normal top-[400px] rounded-[40px] absolute left-[-60px] shadow-lg">
+                     <p className="text-[20px] ml-10">Profile</p>
+                     <img src={pfp} alt="profile img" className="w-[49px] h-[52px]" />
+                      </div>
+                         ) : (
+                     <div id="profile" className="bg-white text-[#88f78a] flex justify-center items-center gap-4 pl-8 pr-6 py-4 font-alice font-normal rounded-[40px] absolute left-[-130px] hover:left-[-60px] top-[400px] shadow-lg">
+                    <p className="text-[20px] ml-10">Profile</p>
+                  <img src={pfp} alt="profile img" className="w-[49px] h-[52px]" />
+                 </div>
+                    )}
+                    </Link>
+
 
                      
                      
