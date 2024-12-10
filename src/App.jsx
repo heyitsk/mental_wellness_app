@@ -15,6 +15,9 @@ import Registration from "./components/Registration";
 import { Navigate } from "react-router-dom";
 import ForgetPssVerify from "./components/ForgetPssVerify";
 import ResetPss from "./components/ResetPss";
+import Music from "./components/Music";
+import Exercise from "./components/Exercise";
+import Dashboard from "./components/Dashboard";
 const App = () =>{
     return(
         <>
@@ -72,9 +75,29 @@ export const appRouter = createBrowserRouter([
             element: <Questions/>
         },
         {
-            path:"/home",
-            element:<Home/>
-        }
+            path:"/dashboard",
+            element:<Dashboard/>,
+            children:[
+              {
+                path:"",
+                element: <Navigate to="home"/>
+              },
+              {
+                path:"home",
+                element:<Home/>
+              },
+              {
+                path:"music",
+                element:<Music/>
+              },
+              {
+                path:"exercise",
+                element:<Exercise/>
+              }
+              
+
+            ]
+        },
         
       ],
     //   errorElement:<Error/>

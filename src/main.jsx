@@ -5,7 +5,12 @@ import App from './App.jsx'
 
 import { appRouter } from './App.jsx'
 import { RouterProvider } from 'react-router-dom'
+import { StatsProvider } from './contexts/StatsContexts.jsx'
 
 createRoot(document.getElementById('root')).render(
-  <RouterProvider router={appRouter}/>
+  <StatsProvider> 
+     <RouterProvider router={appRouter}/>
+  </StatsProvider>
+
+
 )
