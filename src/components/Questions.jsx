@@ -12,8 +12,8 @@
       socialRelationships: { support: null, loneliness: null, connections: null },
       selfEsteem: { confidence: null, comparison: null, selfAcceptance: null },
     });
-    const location = useLocation();
-    const {email} = location.state
+    // const location = useLocation();
+    // const {email} = location.state
     const navigate = useNavigate();
     const { setStats } = useStats();
 
@@ -33,7 +33,7 @@
     // Handle API submission
     const handleSubmit = async () => {
       const payload = {
-        email: email,
+        email: localStorage.getItem("email"),
         ...responses,
       };
 
