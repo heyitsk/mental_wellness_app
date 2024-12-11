@@ -40,9 +40,7 @@ const Login = () => {
       
       
 
-      navigate("/questions",{
-        state:{email:data.email}
-      })
+      navigate("/dashboard")
       
       // console.log(response.data.status);
       

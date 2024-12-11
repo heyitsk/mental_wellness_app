@@ -19,6 +19,7 @@ import Music from "./components/Music";
 import Exercise from "./components/Exercise";
 import Dashboard from "./components/Dashboard";
 import Profile from "./components/Profile";
+import Journal from "./components/Journal";
 const App = () =>{
     return(
         <>
@@ -98,6 +99,10 @@ export const appRouter = createBrowserRouter([
               {
                 path:"profile",
                 element:<Profile/>
+              },
+              {
+                path:"journal",
+                element:<Journal/>
               }
               
 

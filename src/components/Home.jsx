@@ -6,6 +6,7 @@ import Mood from "./Mood";
 import Quote from "./Quote";
 import { useStats } from "../contexts/StatsContexts";
 import MoodGraph from "./MoodGraph";
+import { useNavigate } from "react-router-dom";
 
 
 
@@ -20,6 +21,7 @@ const Home = () => {
     console.log("homestats",stats);
     const st2 = stats.stats;
     console.log(st2);
+    const navigate = useNavigate();
     
     
     
@@ -32,6 +34,12 @@ const Home = () => {
                             
                             <MoodGraph/>
                             <Quote/>
+                            <button 
+                            className="absolute top-[800px] right-[100px] bg-white p-4 border-2 rounded-lg font-alice font-normal text-[20px]"
+                            onClick={()=>{
+                                navigate("/questions")
+
+                            }}>Retest</button>
                             
 
                         

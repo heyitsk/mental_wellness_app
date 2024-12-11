@@ -36,7 +36,7 @@
         localStorage.setItem("name", formData.name);
         localStorage.setItem("email", formData.email);
         navigate("/registration/signup-verify", {
-          state: { email: formData.email, token },
+          state: { token },
       })
         
       } catch (error) {

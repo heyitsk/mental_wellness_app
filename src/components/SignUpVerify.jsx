@@ -9,7 +9,7 @@ function SignUpVerify() {
     const [message, setMessage] = useState("");
     const [isSuccess, setIsSuccess] = useState(false);
     const location = useLocation();
-    const {email,token} = location.state
+    const {token} = location.state
     const [loading, setLoading] = useState(false); 
 
     const navigate = useNavigate();
@@ -20,13 +20,21 @@ function SignUpVerify() {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        const email = localStorage.getItem("email");
+        // console.log(emaill);
+        // console.log(token);
+        
+        
+
         // const url = process.env.REACT_APP_SIGNUP_VERIFY_URL
         try {
             const response = await axios.post("https://login-signup-page-3z09.onrender.com/user/register/verify", { 
                 token,
                 email,
                 otp });
-            navigate("/registration/login")
+            console.log(response.data);
+            
+            navigate("/questions")
             if (response.data.success) {
                 setIsSuccess(true);
                 setMessage(response.data.message || "Verification successful!");

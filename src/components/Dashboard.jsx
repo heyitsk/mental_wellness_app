@@ -61,10 +61,21 @@ const Dashboard = () => {
                      )}
                      </Link>
 
-                     <div id="journal" className=" bg-white text-[#FFB061] flex justify-center items-center gap-4 pl-8 pr-6 py-4 font-alice font-normal rounded-[40px] absolute left-[-140px] hover:left-[-60px] top-[300px] shadow-lg">
+                     <Link to="/dashboard/journal">
+                     {(location.pathname==='/dashboard/journal')?(
+                        <div id="journal" className=" bg-white text-[#FFB061] flex justify-center items-center gap-4 pl-8 pr-6 py-4 font-alice font-normal top-[300px] rounded-[40px] absolute left-[-60px] shadow-lg ">
                         <p  className="text-[20px] ml-10">Journal</p>
                         <img src={journal} alt="home img" className="w-[49px] h-[52px]"></img>
                      </div>
+                     
+                     ):(
+                        <div id="journal" className=" bg-white text-[#FFB061]  flex justify-center items-center gap-4 pl-8 pr-6 py-4 font-alice font-normal rounded-[40px] absolute left-[-140px] hover:left-[-60px] top-[300px] shadow-lg">
+                        <p  className="text-[20px] ml-10">Journal</p>
+                        <img src={journal} alt="home img" className="w-[49px] h-[52px]"></img>
+                     </div>
+
+                     )}
+                     </Link>
 
 
 
