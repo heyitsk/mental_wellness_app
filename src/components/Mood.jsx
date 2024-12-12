@@ -5,6 +5,7 @@ import angry from "../assets/angry.png"
 import happy from "../assets/happy.png"
 import crying from "../assets/crying.png"
 import axios from "axios"
+import { useState } from "react"
 
 
 
@@ -12,19 +13,28 @@ import axios from "axios"
 
 
 const Mood = () => {
+    const [message, setMessage] = useState("");
+
+    const [isSuccess, setIsSuccess] = useState(false);
+
 
     const sendMood = async(value)=>{
         try{
             const userI = localStorage.getItem("userId");
             console.log(userI);
             
-           const respone =  await axios.post("https://login-signup-page-3z09.onrender.com/user/track", {
+           const response =  await axios.post("https://login-signup-page-3z09.onrender.com/user/track", {
                 userId:userI,
                 moodValue:value,
                 
               });
-            console.log(respone.data);
-            alert(respone.data.message)
+            console.log(response.data);
+            if (response.data.success) {
+                setIsSuccess(true);
+                setMessage(response.data.message || "Verification successful!");
+            } else {
+                setMessage(response.data.message || "Verification failed!");
+            }
             
             
         }
@@ -87,8 +97,14 @@ const Mood = () => {
                 className="w-20 h-20 cursor-pointer"
                 />
                 </button>
+                
 
             </div>
+            {message && (
+                <p className={`mt-4 ${isSuccess ? "text-green-600" : "text-red-600"}`}>
+                    {message}
+                </p>
+            )}
 
         </div>
         </>

@@ -5,9 +5,12 @@ import { Bar } from "react-chartjs-2";
 ChartJS.register(Tooltip, Legend, BarElement, CategoryScale, LinearScale);
 
 const BarChart = (info) => {
-    console.log("Info ", info);
+    // console.log("Info ", info);
     const { data } = info;
-    console.log("bar chart data", data);
+    if (!data) {
+        return <div>Loading...</div>; // Add a fallback UI
+      }
+    // console.log("bar chart data", data);
 
     return (
         <>

@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import axios from "axios";
 import { Line } from "react-chartjs-2";  
 import { Chart as ChartJS, CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend } from "chart.js";
+import { format } from 'date-fns';
 
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend);
-import { format } from 'date-fns';
 
 const MoodGraph = () => {
     const [moodHistory, setMoodHistory] = useState([]);
@@ -21,69 +21,61 @@ const MoodGraph = () => {
                 return;
             }
             const response = await axios.get(`https://login-signup-page-3z09.onrender.com/user/moods?userId=${userI}`);
-            console.log("mood fetched",response.data);
-            setMoodHistory(response.data.moods);
-            console.log(response.data.moods)
+            if (response.data && response.data.moods) {
+                setMoodHistory(response.data.moods);
+            } else {
+                console.error("Unexpected response structure:", response.data);
+            }
         } catch (error) {
             console.error("Error fetching mood history:", error);
-        } 
+        }
     };
 
-    const chartData = {
+    // Dynamically generate chart data to ensure it updates with state changes
+    const chartData = useMemo(() => ({
         labels: moodHistory.map((entry) => format(new Date(entry.date), 'dd/MM/yyyy HH:mm:ss')), 
         datasets: [
             {
                 label: "Mood",
-                data: moodHistory.map((entry) => entry.moodValue), // Assuming each mood entry has a `moodValue` field
+                data: moodHistory.map((entry) => entry.moodValue),
                 borderColor: "rgb(75, 192, 192)",
                 backgroundColor: "rgba(75, 192, 192, 0.2)",
                 fill: true,
             },
         ],
-    };
+    }), [moodHistory]);
+
     const chartOptions = {
-        options: {
-            
-            responsive: true,
-            interaction: {
-              intersect: false,
-              axis: 'x'
-            },
-            plugins: {
-              title: {
-                display: true,
-                text: (ctx) => 'Step ' + ctx.chart.data.datasets[0].stepped + ' Interpolation',
-              }
-            },
-            scales: {
-                x: {
-                    title: {
-                        display: true,
-                        text: 'Date',
-                    },
-                },
-                y: {
-                    title: {
-                        display: true,
-                        text: 'Mood Value',
-                    },
+        responsive: true,
+        interaction: {
+            intersect: false,
+            axis: 'x',
+        },
+        scales: {
+            x: {
+                title: {
+                    display: true,
+                    text: 'Date',
                 },
             },
-          }
-    }
+            y: {
+                min: 0,
+                max: 5,
+                ticks: {
+                    stepSize: 1,
+                },
+                title: {
+                    display: true,
+                    text: 'Mood Value',
+                },
+            },
+        },
+    };
 
     return (
-        <>
-            <div className="absolute bg-white border-2 border-black rounded-lg right-[150px] inline-block p-4 top-[350px] w-[600px]">
-                
-                    <Line 
-                    data={chartData} 
-                    options={chartOptions}
-                    
-                    />
-                
-            </div>
-        </>
+        <div className="absolute bg-white border-2 border-black rounded-lg p-4 w-full max-w-[600px] mx-auto top-[350px] right-[140px]">
+            <Line data={chartData} options={chartOptions} />
+        </div>
     );
 };
 
