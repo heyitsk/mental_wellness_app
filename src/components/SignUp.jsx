@@ -33,6 +33,7 @@
         console.log("Data submitted:", formData);
         console.log("API response:", response.data);
         const token = response.data.token;
+        
         localStorage.setItem("name", formData.name);
         localStorage.setItem("email", formData.email);
         navigate("/registration/signup-verify", {

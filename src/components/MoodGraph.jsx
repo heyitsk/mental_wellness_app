@@ -15,9 +15,9 @@ const MoodGraph = () => {
 
     const fetchMoodHistory = async () => {
         try {
-            const userI = localStorage.getItem("userId");
+            const userI = localStorage.getItem("userId")
             if (!userI) {
-                alert("User ID not found!");
+                // alert("User ID not found!");
                 return;
             }
             const response = await axios.get(`https://login-signup-page-3z09.onrender.com/user/moods?userId=${userI}`);
