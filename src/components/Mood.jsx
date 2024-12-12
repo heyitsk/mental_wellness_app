@@ -100,11 +100,11 @@ const Mood = () => {
                 
 
             </div>
-            {message && (
+            {/* {message && (
                 <p className={`mt-4 ${isSuccess ? "text-green-600" : "text-red-600"}`}>
                     {message}
                 </p>
-            )}
+            )} */}
 
         </div>
         </>
