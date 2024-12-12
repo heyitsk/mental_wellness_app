@@ -31,7 +31,7 @@ const MoodGraph = () => {
         }
     };
 
-    // Dynamically generate chart data to ensure it updates with state changes
+    
     const chartData = useMemo(() => ({
         labels: moodHistory.map((entry) => format(new Date(entry.date), 'dd/MM/yyyy HH:mm:ss')), 
         datasets: [
