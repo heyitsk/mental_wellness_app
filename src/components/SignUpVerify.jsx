@@ -33,6 +33,7 @@ function SignUpVerify() {
                 email,
                 otp });
             console.log(response.data);
+            localStorage.setItem("userId",response.data.userId)
             
             navigate("/questions")
             if (response.data.success) {
