@@ -33,7 +33,7 @@ const MoodGraph = () => {
 
     
     const chartData = useMemo(() => ({
-        labels: moodHistory.map((entry) => format(new Date(entry.date), 'dd/MM/yyyy HH:mm:ss')), 
+        labels: moodHistory.map((entry) => format(new Date(entry.date), 'dd/MM/yyyy')), 
         datasets: [
             {
                 label: "Mood",
