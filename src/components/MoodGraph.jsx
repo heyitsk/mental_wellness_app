@@ -73,7 +73,7 @@ const MoodGraph = () => {
     };
 
     return (
-        <div className="absolute bg-white border-2 border-black rounded-lg p-4 w-full max-w-[600px] mx-auto top-[350px] right-[140px]">
+        <div className="absolute bg-white border-2 border-black rounded-lg p-4 w-full max-w-[612px] mx-auto top-[318px] right-[140px]">
             <Line data={chartData} options={chartOptions} />
         </div>
     );

@@ -35,7 +35,7 @@ const Home = () => {
                             <MoodGraph/>
                             <Quote/>
                             <button 
-                            className="absolute top-[800px] right-[100px] bg-white p-4 border-2 rounded-lg font-alice font-normal text-[20px]"
+                            className="absolute top-[661px] left-[887px] bg-white p-4 border-2 border-black rounded-lg font-alice font-normal text-[20px] hover:bg-slate-400"
                             onClick={()=>{
                                 navigate("/questions")
 
