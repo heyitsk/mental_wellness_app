@@ -11,7 +11,7 @@ const MoodGraph = () => {
 
     useEffect(() => {
         fetchMoodHistory();
-    }, []);
+    });
 
     const fetchMoodHistory = async () => {
         try {
